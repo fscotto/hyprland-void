@@ -12,10 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: ghcr.io/void-linux/void-glibc-full:20250227R1
+      image: ghcr.io/void-linux/void-glibc-full:20260501R1
       options: --platform linux/amd64 --privileged
 
     strategy:
+      fail-fast: false
       matrix:
         arch: [ x86_64, x86_64-musl, aarch64, aarch64-musl ]
     env:
