@@ -4,17 +4,17 @@ This repository contains template files and binaries for building or installing 
 
 ### Installation
 
-The easiest way to install Hyprland on Void Linux is using the [binary repository](https://github.com/Makrennel/hyprland-void/tree/repository-x86_64-glibc) which is built automatically using [GitHub Actions](https://github.com/Makrennel/hyprland-void/blob/master/.github/workflows/build-latest.yml) whenever a new commit is pushed to this repository.
+The easiest way to install Hyprland on Void Linux is using the [binary repository](https://github.com/fscotto/hyprland-void/tree/repository-x86_64-glibc) which is built automatically using [GitHub Actions](https://github.com/fscotto/hyprland-void/blob/master/.github/workflows/build-latest.yml) whenever a new commit is pushed to this repository.
 
 You can add this repository to xbps's repositories by creating a file such as `/etc/xbps.d/hyprland-void.conf` with the following text:
 
 ```
-repository=https://raw.githubusercontent.com/Makrennel/hyprland-void/repository-x86_64-glibc
+repository=https://raw.githubusercontent.com/fscotto/hyprland-void/repository-x86_64-glibc
 ```
 
 This can be done with the following command:
 ```
-echo repository=https://raw.githubusercontent.com/Makrennel/hyprland-void/repository-x86_64-glibc | sudo tee /etc/xbps.d/hyprland-void.conf
+echo repository=https://raw.githubusercontent.com/fscotto/hyprland-void/repository-x86_64-glibc | sudo tee /etc/xbps.d/hyprland-void.conf
 ```
 Then you need to refresh your repositories and accept the repository's fingerprint:
 ```
@@ -81,7 +81,7 @@ cd ..
 3) Clone this repository:
 
 ```
-git clone https://github.com/Makrennel/hyprland-void.git
+git clone https://github.com/fscotto/hyprland-void.git
 cd hyprland-void
 ```
 
@@ -111,6 +111,6 @@ Any contributions are greatly appreciated, but please bear in mind that the buil
 
 Please also try not to superfluously change things when pull requesting with this repository, and use your own name and email in the maintainer section of new templates: do not contribute on behalf of someone else if they are not involved with the pull request. Where possible, commit changes separately (rather than in huge lump commits) and describe the changes so contributions can be easily understood and cherry picked as needed.
 
-If you would like to create your own fork of this repository and use the build action for your own packages, you must either create a private repository called `hyprland-void-private-pem` where you will store your signing keys and fetch them using a GitHub Private Access Token stored in your repository's secrets called `PEM_PAT`, or store the signing key directly in your secrets and modify [`scripts/sign-packages`](https://github.com/Makrennel/hyprland-void/blob/master/scripts/sign-packages) and the [build action](https://github.com/Makrennel/hyprland-void/blob/master/.github/workflows/build-latest.yml) appropriately. You cannot install packages from remote repositories without signing them, and *DO NOT* put the private signing key in your public repository.  You will also need to create a GitHub Personal Access Token so that the action can delete, create, and push the branches where the finished packages and repodata is stored.
+If you would like to create your own fork of this repository and use the build action for your own packages, you must either create a private repository called `hyprland-void-private-pem` where you will store your signing keys and fetch them using a GitHub Private Access Token stored in your repository's secrets called `PEM_PAT`, or store the signing key directly in your secrets and modify [`scripts/sign-packages`](https://github.com/fscotto/hyprland-void/blob/master/scripts/sign-packages) and the [build action](https://github.com/fscotto/hyprland-void/blob/master/.github/workflows/build-latest.yml) appropriately. You cannot install packages from remote repositories without signing them, and *DO NOT* put the private signing key in your public repository.  You will also need to create a GitHub Personal Access Token so that the action can delete, create, and push the branches where the finished packages and repodata is stored.
 
 For information on signing your repository, see the [Void Linux documentation](https://docs.voidlinux.org/xbps/repositories/signing.html) and `xbps-rindex`'s [man page](https://man.voidlinux.org/xbps-rindex.1).
