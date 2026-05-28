@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# Merge our shlibs into void-packages shlibs, overriding any conflicting entries.
+# Usage: merge-shlibs <our-shlibs> <target-shlibs>
+OUR="$1"
+TARGET="$2"
+
+while IFS=' ' read -r soname pkg; do
+  base=$(echo "$soname" | sed 's/\.so\..*//')
+  sed -i "/^${base}\.so\./d" "$TARGET"
+done < "$OUR"
+
+cat "$OUR" >> "$TARGET"

@@ -5,7 +5,7 @@ COMMAND="
   git clone --depth 1 https://github.com/void-linux/void-packages.git
 
   cd /work/$REPO_NAME
-  cat common/shlibs >> /work/void-packages/common/shlibs
+  /work/$REPO_NAME/scripts/merge-shlibs /work/$REPO_NAME/common/shlibs /work/void-packages/common/shlibs
   cp -r srcpkgs/* /work/void-packages/srcpkgs
 
   chown -R builder:builder /work
