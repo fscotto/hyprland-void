@@ -30,13 +30,22 @@ jobs:
     needs: verify-signature
 
     container:
-      image: ghcr.io/void-linux/void-glibc-full:20260501R1
+      image: ${{ matrix.container }}
       options: --platform linux/amd64 --privileged
 
     strategy:
       fail-fast: false
       matrix:
         arch: [ x86_64, x86_64-musl, aarch64, aarch64-musl ]
+        include:
+          - arch: x86_64
+            container: ghcr.io/void-linux/void-glibc-full:20260501R1
+          - arch: x86_64-musl
+            container: ghcr.io/void-linux/void-musl-full:20260501R1
+          - arch: aarch64
+            container: ghcr.io/void-linux/void-glibc-full:20260501R1
+          - arch: aarch64-musl
+            container: ghcr.io/void-linux/void-glibc-full:20260501R1
     env:
       REPO_OWNER: "${{ github.repository_owner }}"
       REPO_NAME: "${{ github.event.repository.name }}"
